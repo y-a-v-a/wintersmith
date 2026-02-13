@@ -1,3 +1,5 @@
 node_modules
 lib
 examples/*/build
+.pnpm-store
+examples/*/package-lock.json

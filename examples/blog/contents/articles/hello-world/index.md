@@ -36,7 +36,7 @@ Good, now, the directory structure of your blog is as follows:
 │   │   └── main.css
 │   └── feed.json
 ├── plugins
-│   └── paginator.coffee      <- paginator plugin
+│   └── paginator.js          <- paginator plugin
 ├── templates
 │   ├── archive.pug
 │   ├── article.pug
@@ -45,10 +45,10 @@ Good, now, the directory structure of your blog is as follows:
 │   ├── index.pug
 │   └── layout.pug
 └── views
-    └── articles.coffee       <- view that lists articles
+    └── articles.js           <- view that lists articles
 ```
 
-Articles are sorted by date and 3 are shown per page, you can configure this and more in config.json. Check paginator.coffee for all options related to pagination, most plugins also have their own options.
+Articles are sorted by date and 3 are shown per page, you can configure this and more in config.json. Check paginator.js for all options related to pagination, most plugins also have their own options.
 
 ### A typical article
 

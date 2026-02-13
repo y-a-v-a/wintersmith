@@ -19,23 +19,35 @@ function getRandomNumber() {
 }
 ```
 
-### CoffeeScript
+### TypeScript
 
-```coffeescript
-class Animal
-  ### Intellegent design ###
-  getDNA: ->
-    print 'sequencing...'
-    while true
-      sleep 1
+```ts
+class Animal {
+  // Intelligent design
+  getDNA(): void {
+    console.log('sequencing...');
+    for (;;) {
+      sleep(1);
+    }
+  }
+}
 
-class Monkey extends Animal
-  speak: ->
-    print 'ah ah ah'
+class Monkey extends Animal {
+  speak(): void {
+    console.log('ah ah ah');
+  }
+}
 
-class Human extends Monkey
-  speak: ->
-    print ['yolo' unless i % 3] + ['swag' unless i % 5] or i for i in [1..100]
+class Human extends Monkey {
+  speak(): void {
+    for (let i = 1; i <= 100; i += 1) {
+      const parts = [];
+      if (i % 3 !== 0) parts.push('yolo');
+      if (i % 5 !== 0) parts.push('swag');
+      console.log(parts.length ? parts.join(' ') : i);
+    }
+  }
+}
 ```
 
 ### C

@@ -198,30 +198,38 @@ It works just like you would expect a `require()` call to.
 
 Plugin example:
 
-```coffeescript
-fs = require 'fs'
+```js
+const fs = require('fs');
 
-module.exports = (env, callback) ->
+module.exports = (env, callback) => {
+  class SimonSays extends env.ContentPlugin {
+    constructor(filepath, text) {
+      super();
+      this.filepath = filepath;
+      this.text = `Simon says: ${text}`;
+    }
 
-  class SimonSays extends env.ContentPlugin
+    getFilename() {
+      return this.filepath.relative; // relative to content directory
+    }
 
-    constructor: (@filepath, text) ->
-      @text = "Simon says: #{ text }"
+    getView() {
+      return (env, locals, contents, templates, cb) => {
+        cb(null, Buffer.from(this.text));
+      };
+    }
+  }
 
-    getFilename: -> @filepath.relative # relative to content directory
+  SimonSays.fromFile = (filepath, cb) => {
+    fs.readFile(filepath.full, (error, buffer) => {
+      if (error) return cb(error);
+      return cb(null, new SimonSays(filepath, buffer.toString()));
+    });
+  };
 
-    getView: -> (env, locals, contents, templates, callback) ->
-      callback null, new Buffer @text
-
-  SimonSays.fromFile = (filepath, callback) ->
-    fs.readFile filepath.full, (error, buffer) ->
-      if error
-        callback error
-      else
-        callback null, new SimonSays filepath, buffer.toString()
-
-  env.registerContentPlugin 'text', '**/*.txt', SimonSays
-  callback() # tell the plugin manager we are done
+  env.registerContentPlugin('text', '**/*.txt', SimonSays);
+  callback(); // tell the plugin manager we are done
+};
 ```
 
 See the [plugin guide][plugin-guide] for more info.
@@ -262,10 +270,10 @@ Check the source or [api docs][docs] for a full list of methods.
 
 ## Contributing
 
-To run a development that compiles the coffee script files on the fly use the `./bin/dev/cli` command. The chdir `-C <path>` flag is handy for pointing it to a test project to experiment with.
+To run a development CLI use the `./bin/dev/cli` command. The chdir `-C <path>` flag is handy for pointing it to a test project to experiment with.
 
 ## About
 
-Wintersmith is written by [Johan Nordberg](http://johan-nordberg.com) using [CoffeeScript](http://coffeescript.org/) and licensed under the [MIT-license](http://en.wikipedia.org/wiki/MIT_License).
+Wintersmith is written by [Johan Nordberg](http://johan-nordberg.com) and licensed under the [MIT-license](http://en.wikipedia.org/wiki/MIT_License).
 
 The name is a nod to [blacksmith](https://github.com/flatiron/blacksmith) which inspired this project.
