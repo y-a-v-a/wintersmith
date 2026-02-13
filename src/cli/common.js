@@ -70,7 +70,7 @@ function configFromFileAsync(configPath) {
 }
 
 async function loadEnvAsync(argv) {
-  /* creates a new wintersmith environment
+  /* creates a new coldsmith environment
      options are resolved with the hierarchy: argv > configfile > defaults */
   const workDir = path.resolve(argv.chdir || process.cwd());
   logger.verbose(`creating environment - work directory: ${workDir}`);
@@ -185,12 +185,15 @@ class NpmAdapter extends stream.Writable {
 }
 
 function getStorageDir() {
-  /* Return users wintersmith directory, used for cache and user templates. */
+  /* Return users coldsmith directory, used for cache and user templates. */
+  if (process.env.COLDSMITH_PATH != null) {
+    return process.env.COLDSMITH_PATH;
+  }
   if (process.env.WINTERSMITH_PATH != null) {
     return process.env.WINTERSMITH_PATH;
   }
   const home = process.env.HOME || process.env.USERPROFILE;
-  let dir = 'wintersmith';
+  let dir = 'coldsmith';
   if (process.platform !== 'win32') {
     dir = `.${dir}`;
   }

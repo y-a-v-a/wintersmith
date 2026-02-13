@@ -9,7 +9,7 @@
 1. CoffeeScript removal
 - Moved legacy CoffeeScript sources to `legacy/coffee/` for reference.
 - Rewrote runtime, CLI, and plugin code into readable JavaScript under `src/`.
-- Updated entry points to run JS directly: `bin/wintersmith`, `bin/dev/cli`.
+- Updated entry points to run JS directly: `bin/coldsmith`, `bin/dev/cli`.
 
 2. Async/await migration
 - CLI modules in `src/cli/*` converted to async/await.
@@ -27,7 +27,7 @@
 ## Smoke Checks
 - `node -e "require('./src')"` passed.
 - Local-only build smoke test passed:
-  - `node bin/wintersmith build -C /tmp/ws-smoke`
+  - `node bin/coldsmith build -C /tmp/ws-smoke`
 - `examples/blog` build requires npm dependencies; install attempts failed due to DNS (`ENOTFOUND` for registry.npmjs.org).
 
 ## Notes

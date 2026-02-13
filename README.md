@@ -1,35 +1,21 @@
-#![Wintersmith](http://wintersmith.io/images/wintersmith.svg)
+# Coldsmith
 
-Wintersmith is a simple yet flexible static site generator. It takes contents (markdown, less, scripts, etc), transforms them using plugins and outputs a static website (html, css, images, etc) that you can host anywhere.
+Coldsmith is a simple yet flexible static site generator. It takes contents (markdown, less, scripts, etc), transforms them using plugins and outputs a static website (html, css, images, etc) that you can host anywhere.
 
 It ships with plugins for [markdown](http://daringfireball.net/projects/markdown/) and [pug templates](https://github.com/pugjs/pug), if you need something else check the [plugin listing][plugin-listing] or [write your own][plugin-guide]!
 
-## Resources
-
- * [Project site][website]
- * [API Documentation][docs]
- * [Wiki][wiki]
- * [stackoverflow tag](http://stackoverflow.com/questions/tagged/wintersmith)
- * IRC - **#wintersmith** on freenode
-
-[website]: http://wintersmith.io "Wintersmith project website"
-[docs]: http://wintersmith.io/docs "Wintersmith API Documentation"
-[wiki]: https://github.com/jnordberg/wintersmith/wiki "Wintersmith wiki"
-[plugin-listing]: https://github.com/jnordberg/wintersmith/wiki/Plugins "Wintersmith plugin listing"
-[plugin-guide]: https://github.com/jnordberg/wintersmith/wiki/Writing-plugins "Wintersmith plugin guide"
-
 ## Quick-start
 
-First install wintersmith using [npm](http://npmjs.org/):
+First install coldsmith using [npm](http://npmjs.org/):
 
 ```bash
-$ npm install wintersmith -g
+$ npm install coldsmith -g
 ```
 
-This will install wintersmith globally on your system so that you can access the `wintersmith` command from anywhere. Once that is complete run:
+This will install coldsmith globally on your system so that you can access the `coldsmith` command from anywhere. Once that is complete run:
 
 ```bash
-$ wintersmith new <path>
+$ coldsmith new <path>
 ```
 
 Where `<path>` is the location you want the site to be generated. This creates a skeleton site with a basic set of templates and some articles, while not strictly needed it's a good starting point.
@@ -38,7 +24,7 @@ Now enter the directory and start the preview server:
 
 ```bash
 $ cd <path>
-$ wintersmith preview
+$ coldsmith preview
 ```
 
 At this point you are ready to start customizing your site. Point your browser to `http://localhost:8080` and start editing templates and articles.
@@ -46,7 +32,7 @@ At this point you are ready to start customizing your site. Point your browser t
 When done run:
 
 ```bash
-$ wintersmith build
+$ coldsmith build
 ```
 
 This generates your site and places it in the `build/` directory - all ready to be copied to your web server!
@@ -55,7 +41,7 @@ And remember to give the old `--help` a look :-)
 
 ## Overview
 
-A wintersmith site is built up of three main components: contents, views and templates.
+A coldsmith site is built up of three main components: contents, views and templates.
 
 Contents is a directory where all the sites raw material goes (markdown files, images, javascript etc). This directory is then scanned to produce what's internally called a ContentTree.
 
@@ -71,17 +57,15 @@ The ContentTree is a nested object built up of ContentPlugins and looks somethin
 }
 ```
 
-![Wintersmith](http://wintersmith.io/images/flow.svg)
-
 This content tree is provided in full to the views when rendering. This gives you a lot of flexibility when writing plugins, you could for example write a plugin that generates a mosaic using images located in a specific directory.
 
-Wintersmith comes with a default Page plugin that renders markdown content using templates. This plugin takes markdown (combined with some metadata, more on this later) compiles it and provides it to a template along with the content tree and some utility functions.
+Coldsmith comes with a default Page plugin that renders markdown content using templates. This plugin takes markdown (combined with some metadata, more on this later) compiles it and provides it to a template along with the content tree and some utility functions.
 
 This brings us to the second component, the template directory. All templates found in this directory are loaded and are also passed to the content plugins when rendering.
 
 By default only `.pug` templates are loaded, but you can easily add template plugins to use a template engine of your choosing.
 
-Check the `examples/` directory for some inspiration on how you can use wintersmith or the [showcase](https://github.com/jnordberg/wintersmith/wiki/Showcase) to see what others are doing.
+Check the `examples/` directory for some inspiration on how you can use coldsmith.
 
 ## Configuration
 
@@ -113,7 +97,7 @@ ContentPlugins transform content, each item in the content tree is represented b
 
 The ContentPlugin class is that all content plugins inherit from. Subclasses have to implement the `getFilename` and `getView` instance methods and the `fromFile` class method - more info in the [plugin guide][plugin-guide].
 
-All content plugins have the following properties (a property in wintersmith is simply a shortcut to a getter. i.e. `item.filename` is the same as calling `item.getFilename()`)
+All content plugins have the following properties (a property in coldsmith is simply a shortcut to a getter. i.e. `item.filename` is the same as calling `item.getFilename()`)
 
 Property     | Getter signature | Description
 -------------|------------------|---------------------
@@ -123,7 +107,7 @@ url          | `getUrl(base)`   | url for the content. *base* is from where this
 
 ## The Page plugin
 
-Wintersmith ships with a page plugin. This plugin is what the markdown page and many other content plugins build upon.
+Coldsmith ships with a page plugin. This plugin is what the markdown page and many other content plugins build upon.
 
 ### Model
 
@@ -191,7 +175,7 @@ When a page is rendered to a template the page instance is available as `page` i
 
 ## Plugins
 
-A plugin is a function that's called with the wintersmith environment and a callback.
+A plugin is a function that's called with the coldsmith environment and a callback.
 
 Plugins are loaded by adding a "require id" to `config.plugins`. This can be a path, local- or global module.
 It works just like you would expect a `require()` call to.
@@ -234,17 +218,17 @@ module.exports = (env, callback) => {
 
 See the [plugin guide][plugin-guide] for more info.
 
-## Using wintersmith programmatically
+## Using coldsmith programmatically
 
 example:
 
 ```javascript
 
-var wintersmith = require('wintersmith');
+var coldsmith = require('coldsmith');
 
 // create the sites environment, can also be called with a config object. e.g.
 // {contents: '/some/contents', locals: {powerLevel: 10}}, ..}
-var env = wintersmith('/path/to/my/config.json');
+var env = coldsmith('/path/to/my/config.json');
 
 // build site
 env.build(function(error) {
@@ -274,6 +258,6 @@ To run a development CLI use the `./bin/dev/cli` command. The chdir `-C <path>` 
 
 ## About
 
-Wintersmith is written by [Johan Nordberg](http://johan-nordberg.com) and licensed under the [MIT-license](http://en.wikipedia.org/wiki/MIT_License).
+Coldsmith is based on work by [Johan Nordberg](http://johan-nordberg.com) and licensed under the [MIT-license](http://en.wikipedia.org/wiki/MIT_License).
 
 The name is a nod to [blacksmith](https://github.com/flatiron/blacksmith) which inspired this project.

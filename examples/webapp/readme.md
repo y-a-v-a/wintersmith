@@ -1,7 +1,7 @@
 
 # Webapp
 
-Opinionated web application template for wintersmith.
+Opinionated web application template for coldsmith.
 
 Run `npm install` to install the plugins and deps.
 

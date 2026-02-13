@@ -1,5 +1,5 @@
 {
-  "name": "wintersmith",
+  "name": "coldsmith",
   "version": "2.5.0",
   "author": "Johan Nordberg <code@johan-nordberg.com>",
   "description": "A flexible static site generator.",
@@ -12,14 +12,14 @@
     "pug"
   ],
   "bin": {
-    "wintersmith": "./bin/wintersmith"
+    "coldsmith": "./bin/coldsmith"
   },
   "scripts": {
     "test": "node --test test/*.test.js"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jnordberg/wintersmith.git"
+    "url": "https://github.com/y-a-v-a/wintersmith.git"
   },
   "dependencies": {
     "chalk": "^2.4.1",

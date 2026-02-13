@@ -34,7 +34,7 @@ test('Config.fromFileSync reads file and stores source filename', async () => {
 
 test('Config.fromFileSync throws when file is missing', () => {
   assert.throws(
-    () => Config.fromFileSync('/tmp/wintersmith-definitely-missing-config.json'),
+    () => Config.fromFileSync('/tmp/coldsmith-definitely-missing-config.json'),
     /does not exist/
   );
 });

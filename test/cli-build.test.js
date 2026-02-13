@@ -18,7 +18,7 @@ test('CLI build command writes output files for a minimal site', async () => {
 
   try {
     const result = await runCli(
-      [path.join(rootDir, 'bin/wintersmith'), 'build', '-C', siteDir],
+      [path.join(rootDir, 'bin/coldsmith'), 'build', '-C', siteDir],
       { cwd: rootDir }
     );
 

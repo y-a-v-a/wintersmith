@@ -13,7 +13,7 @@ const { runGenerator } = require('./generator');
 const { readJSONSync } = utils;
 
 class Environment extends EventEmitter {
-  /* The Wintersmith environment. */
+  /* The Coldsmith environment. */
 
   constructor(config, workDir, log) {
     super();

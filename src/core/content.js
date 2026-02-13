@@ -24,7 +24,7 @@ class ContentPlugin {
   getView() {
     /* Return a view that renders the plugin. Either a string naming a exisitng view or a function:
        `(env, locals, contents, templates, callback) ->`
-       Where *environment* is the current wintersmith environment, *contents* is the content-tree
+       Where *environment* is the current coldsmith environment, *contents* is the content-tree
        and *templates* is a map of all templates as: {filename: templateInstance}. *callback* should be
        called with a stream/buffer or null if this plugin instance should not be rendered. */
     throw new Error('Not implemented.');

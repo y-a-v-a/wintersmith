@@ -25,7 +25,7 @@ loadTemplates(path.join(__dirname, '../../examples/'));
 loadTemplates(path.join(getStorageDir(), 'templates/'));
 
 const usage = `
-usage: wintersmith new [options] <path>
+usage: coldsmith new [options] <path>
 
 creates a skeleton site in <path>
 
@@ -39,7 +39,7 @@ options:
 example:
 
   create a new site in your home directory
-  $ wintersmith new ~/my-blog
+  $ coldsmith new ~/my-blog
 `;
 
 const options = {
@@ -90,7 +90,7 @@ async function createSite(argv) {
 
   const from = templates[argv.template];
   const to = path.resolve(location);
-  logger.info(`initializing new wintersmith site in ${to} using template ${argv.template}`);
+  logger.info(`initializing new coldsmith site in ${to} using template ${argv.template}`);
 
   try {
     logger.verbose(`checking validity of ${to}`);

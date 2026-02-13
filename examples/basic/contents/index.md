@@ -1,5 +1,5 @@
 ---
-title: Wintersmith
+title: Coldsmith
 template: index.pug
 ---
 

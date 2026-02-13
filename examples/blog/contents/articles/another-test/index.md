@@ -1,6 +1,6 @@
 ---
 title: Code and stuff!
-author: the-wintersmith
+author: the-coldsmith
 date: 2012-10-01 15:00
 template: article.pug
 ---

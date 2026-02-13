@@ -3,7 +3,7 @@ const { logger } = require('./../core/logger');
 const { loadEnv, commonUsage, commonOptions, extendOptions } = require('./common');
 
 const usage = `
-usage: wintersmith preview [options]
+usage: coldsmith preview [options]
 
 options:
 
@@ -16,7 +16,7 @@ options:
 examples:
 
   preview using a config file (assuming config.json is found in working directory):
-  $ wintersmith preview
+  $ coldsmith preview
 `;
 
 const options = {

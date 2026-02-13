@@ -8,7 +8,7 @@ const { fileExists, readJSON } = require('./../core/utils');
 const { logger } = require('./../core/logger');
 
 const usage = `
-usage: wintersmith plugin [options] <command>
+usage: coldsmith plugin [options] <command>
 
 commands:
 
@@ -74,7 +74,7 @@ function npmInstallAsync(name) {
 
 function fetchListing() {
   return new Promise((resolve, reject) => {
-    https.get('https://api.npms.io/v2/search?q=keywords:wintersmith-plugin&size=200', (response) => {
+    https.get('https://api.npms.io/v2/search?q=keywords:coldsmith-plugin,wintersmith-plugin&size=200', (response) => {
       let error;
       if (response.statusCode !== 200) {
         error = new Error(`Unexpected response when searching registry, HTTP ${response.statusCode}`);
@@ -138,7 +138,7 @@ function displayListing(list) {
 }
 
 function normalizePluginName(name) {
-  return name.replace(/^wintersmith-/, '');
+  return name.replace(/^(coldsmith|wintersmith)-/, '');
 }
 
 async function installPlugin(env, list, argv) {

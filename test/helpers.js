@@ -3,7 +3,7 @@ const os = require('os');
 const path = require('path');
 const { spawn } = require('child_process');
 
-async function makeTempDir(prefix = 'wintersmith-test-') {
+async function makeTempDir(prefix = 'coldsmith-test-') {
   return fs.mkdtemp(path.join(os.tmpdir(), prefix));
 }
 

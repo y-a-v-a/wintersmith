@@ -1,4 +1,4 @@
 
 # Blog
 
-The default [wintersmith](https://github.com/jnordberg/wintersmith) template
+The default [coldsmith](https://github.com/y-a-v-a/wintersmith) template

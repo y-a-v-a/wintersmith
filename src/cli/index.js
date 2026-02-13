@@ -4,7 +4,7 @@ const logger = require('./../core/logger').logger;
 const { extendOptions } = require('./common');
 
 const usage = `
-usage: wintersmith [options] [command]
+usage: coldsmith [options] [command]
 
 commands:
 
